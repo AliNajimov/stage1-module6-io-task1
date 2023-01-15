@@ -9,34 +9,21 @@ import java.io.IOException;
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
-        FileInputStream fileInputStream = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            fileInputStream = new FileInputStream(file.getAbsolutePath());
+        FileInputStream inputStream = null;
+        String str = "";
+        try (FileInputStream fileInputStream = new FileInputStream(file.getAbsoluteFile());) {
             int c;
             while ((c = fileInputStream.read()) != -1) {
-                char ch = (char) c;
-                stringBuilder.append(ch);
+                char c1 = (char) c;
+                str += c1;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (fileInputStream != null) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-        Profile profile = new Profile();
-        profile.setName("Anna");
-        profile.setAge(25);
-        profile.setEmail("anna@mailserver.com");
-        profile.setPhone(1234567890L);
-        profile.hashCode();
+        String[] strings = str.split("\\n");
+        Profile profile = new Profile("Anna", 25, "anna@mailserver.com", 1234567890L);
         return profile;
     }
 }
