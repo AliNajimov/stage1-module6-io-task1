@@ -17,8 +17,6 @@ public class FileReader {
                 char c1 = (char) c;
                 str += c1;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
