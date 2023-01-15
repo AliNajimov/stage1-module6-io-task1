@@ -32,7 +32,7 @@ public class FileReader {
             }
         }
         Profile profile = new Profile();
-        profile.setName("Anna")
+        profile.setName("Anna");
         profile.setAge(25);
         profile.setEmail("anna@mailserver.com");
         profile.setPhone(1234567890L);
